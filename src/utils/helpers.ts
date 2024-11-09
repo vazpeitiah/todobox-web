@@ -1,29 +1,29 @@
-import { TaskStatus } from "./enum"
-import { ChipType } from "./types"
+import { TaskStatus } from './enum'
+import { ChipType } from './types'
 
 export const getStatusChipType = (status: TaskStatus): ChipType => {
   switch (status) {
     case TaskStatus.Done:
-      return "success"
+      return 'success'
     case TaskStatus.Pending:
-      return "inactive"
+      return 'inactive'
     case TaskStatus.InProgress:
-      return "warning"
+      return 'warning'
     default:
-      return "inactive"
+      return 'inactive'
   }
 }
 
 export const getStatusLabel = (status: TaskStatus) => {
   switch (status) {
     case TaskStatus.Done:
-      return "Completado"
+      return 'Completado'
     case TaskStatus.Pending:
-      return "Pendiente"
+      return 'Pendiente'
     case TaskStatus.InProgress:
-      return "En progreso"
+      return 'En progreso'
     default:
-      return "Sin estado"
+      return 'Sin estado'
   }
 }
 
@@ -32,14 +32,14 @@ export const parseUtcDate = (date?: Date | null): Date | null => {
   const offset = date.getTimezoneOffset()
   return new Date(date.getTime() - offset * 60 * 1000)
     .toISOString()
-    .split("T")[0] as unknown as Date
+    .split('T')[0] as unknown as Date
 }
 
 export const formatDate = (date?: Date | null): string => {
-  if (!date) return ""
-  return new Date(date).toLocaleDateString("es-MX", {
-    year: "numeric",
-    month: "long",
-    day: "numeric"
+  if (!date) return ''
+  return new Date(date).toLocaleDateString('es-MX', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
   })
 }

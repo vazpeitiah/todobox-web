@@ -1,9 +1,9 @@
-import { updateTask } from "@api/tasks"
-import { useToastContext } from "@hooks/useToastContext"
-import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { qk } from "@utils/const"
-import { CreateTask, Task } from "@utils/types"
-import { AxiosError } from "axios"
+import { updateTask } from '@api/tasks'
+import { useToastContext } from '@hooks/useToastContext'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { qk } from '@utils/const'
+import { CreateTask, Task } from '@utils/types'
+import { AxiosError } from 'axios'
 
 type Params = {
   id: string
@@ -21,7 +21,7 @@ const useUpdateTask = (options?: UseUpdateTask) => {
     mutationFn: ({ id, data }) => updateTask(id, data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [qk.tasks.get] })
-      success("Tarea actualizada correctamente!!")
+      success('Tarea actualizada correctamente!!')
       options?.onSuccess?.()
     }
   })

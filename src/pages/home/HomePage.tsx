@@ -1,9 +1,9 @@
-import { useAuthContext } from "@hooks/useAuthContext";
-import { routes } from "@utils/const";
-import { Link } from "react-router-dom";
+import { useAuthContext } from '@hooks/useAuthContext'
+import { routes } from '@utils/const'
+import { Link } from 'react-router-dom'
 
 const HomePage = () => {
-  const { decodedToken } = useAuthContext();
+  const { decodedToken } = useAuthContext()
 
   return (
     <div className="hero">
@@ -23,7 +23,7 @@ const HomePage = () => {
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default HomePage;
+export default HomePage

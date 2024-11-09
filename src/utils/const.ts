@@ -1,18 +1,18 @@
 export const routes = {
-  about: "/about",
-  root: "/",
+  about: '/about',
+  root: '/',
   tasks: {
-    root: "/tasks",
-    new: "/tasks/new"
+    root: '/tasks',
+    new: '/tasks/new'
   },
-  login: "/login",
-  signUp: "/sign-up",
-  profile: "/profile"
+  login: '/login',
+  signUp: '/sign-up',
+  profile: '/profile'
 }
 
 export const qk = {
   tasks: {
-    get: "tasks"
+    get: 'tasks'
   }
 }
 

@@ -1,8 +1,8 @@
-import { Chip } from "@components"
-import { useDeleteTask } from "@queries/tasks"
-import { getStatusChipType, getStatusLabel } from "@utils/helpers"
-import { Task } from "@utils/types"
-import { Trash } from "iconoir-react"
+import { Chip } from '@components'
+import { useDeleteTask } from '@queries/tasks'
+import { getStatusChipType, getStatusLabel } from '@utils/helpers'
+import { Task } from '@utils/types'
+import { Trash } from 'iconoir-react'
 
 interface TasksTableProps {
   tasks: Task[]
@@ -11,7 +11,7 @@ interface TasksTableProps {
 const TasksTable = ({ tasks }: TasksTableProps) => {
   const { deleteTask } = useDeleteTask()
   const handleDelete = (id: string) => {
-    const hasConfirm = window.confirm("¿Estás seguro de eliminar esta tarea?")
+    const hasConfirm = window.confirm('¿Estás seguro de eliminar esta tarea?')
     if (hasConfirm) {
       deleteTask(id)
     }

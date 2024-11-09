@@ -1,19 +1,19 @@
-import { Controller, SubmitHandler, useForm } from "react-hook-form"
-import { useLocation, useNavigate } from "react-router-dom"
-import { zodResolver } from "@hookform/resolvers/zod"
+import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { zodResolver } from '@hookform/resolvers/zod'
 
-import { useCreateTask } from "@queries/tasks"
-import { CreateTask, createTaskSchema, Task } from "@utils/types"
-import { TaskStatus } from "@utils/enum"
-import { getStatusLabel, parseUtcDate } from "@utils/helpers"
-import clsx from "clsx"
-import useUpdateTask from "@queries/tasks/useUpdateTask"
-import { ErrorMessage } from "@components"
+import { useCreateTask } from '@queries/tasks'
+import { CreateTask, createTaskSchema, Task } from '@utils/types'
+import { TaskStatus } from '@utils/enum'
+import { getStatusLabel, parseUtcDate } from '@utils/helpers'
+import clsx from 'clsx'
+import useUpdateTask from '@queries/tasks/useUpdateTask'
+import { ErrorMessage } from '@components'
 
 const defaultValues: CreateTask = {
-  title: "",
+  title: '',
   date: null,
-  description: "",
+  description: '',
   status: TaskStatus.Pending
 }
 
@@ -61,7 +61,7 @@ const TaskForm = () => {
     <>
       <div className="divider">
         <h1 className="text-lg font-bold">
-          {task ? "Editar tarea" : "Nueva tarea"}
+          {task ? 'Editar tarea' : 'Nueva tarea'}
         </h1>
       </div>
       <form
@@ -70,7 +70,7 @@ const TaskForm = () => {
       >
         <input
           type="text"
-          {...register("title")}
+          {...register('title')}
           className="input input-bordered"
           placeholder="Título"
         />
@@ -79,14 +79,14 @@ const TaskForm = () => {
         )}
         <input
           type="date"
-          {...register("date")}
+          {...register('date')}
           className="input input-bordered"
         />
         {errors.date?.message && (
           <ErrorMessage>{errors.date.message.toString()}</ErrorMessage>
         )}
         <textarea
-          {...register("description")}
+          {...register('description')}
           className="textarea textarea-bordered"
           placeholder="✏️ Escribe una descripción más detallada"
         />
@@ -112,10 +112,10 @@ const TaskForm = () => {
                       value={status}
                       onChange={(e) => field.onChange(e.target.value)}
                       checked={field.value === status}
-                      className={clsx("radio", {
-                        ["checked:bg-warning"]: status === TaskStatus.Pending,
-                        ["checked:bg-info"]: status === TaskStatus.InProgress,
-                        ["checked:bg-success"]: status === TaskStatus.Done
+                      className={clsx('radio', {
+                        ['checked:bg-warning']: status === TaskStatus.Pending,
+                        ['checked:bg-info']: status === TaskStatus.InProgress,
+                        ['checked:bg-success']: status === TaskStatus.Done
                       })}
                     />
                   </label>

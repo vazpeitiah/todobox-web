@@ -1,5 +1,5 @@
-import { z } from "zod"
-import { TaskStatus } from "./enum"
+import { z } from 'zod'
+import { TaskStatus } from './enum'
 
 export const taskSchema = z.object({
   id: z.string(),
@@ -20,11 +20,13 @@ export const userSchema = z.object({
 
 export const authParamsSchema = userSchema.omit({ name: true, id: true })
 
-export const decodedTokenSchema = userSchema.omit({ password: true, id: true }).extend({
-  userId: z.string(),
-  iat: z.number(),
-  exp: z.number()
-})
+export const decodedTokenSchema = userSchema
+  .omit({ password: true, id: true })
+  .extend({
+    userId: z.string(),
+    iat: z.number(),
+    exp: z.number()
+  })
 
 export const createUserSchema = userSchema
   .omit({ id: true })
@@ -35,8 +37,8 @@ export const createUserSchema = userSchema
     if (data.password !== data.confirmPassword) {
       return ctx.addIssue({
         code: z.ZodIssueCode.custom,
-        message: "Las contraseñas no coinciden",
-        path: ["confirmPassword"]
+        message: 'Las contraseñas no coinciden',
+        path: ['confirmPassword']
       })
     }
     return true
@@ -50,7 +52,7 @@ export type User = z.infer<typeof userSchema>
 export type Task = z.infer<typeof taskSchema>
 export type CreateTask = z.infer<typeof createTaskSchema>
 
-export type ToastOptions ={
+export type ToastOptions = {
   description: string
 }
 
@@ -69,4 +71,4 @@ export type AuthContextType = {
   decodedToken: DecodedToken | null
 }
 
-export type ChipType = "error" | "success" | "inactive" | "warning"
+export type ChipType = 'error' | 'success' | 'inactive' | 'warning'

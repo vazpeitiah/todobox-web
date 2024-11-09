@@ -1,5 +1,5 @@
-import { routes } from "@utils/const"
-import { Link } from "react-router-dom"
+import { routes } from '@utils/const'
+import { Link } from 'react-router-dom'
 
 const NotFoundPage = () => {
   return (

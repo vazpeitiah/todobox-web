@@ -1,7 +1,7 @@
-import { useAuthContext } from "@hooks/useAuthContext";
+import { useAuthContext } from '@hooks/useAuthContext'
 
 const ProfilePage = () => {
-  const { decodedToken } = useAuthContext();
+  const { decodedToken } = useAuthContext()
   return (
     <div className="hero py-4">
       <div className="card bg-base-200">
@@ -20,11 +20,10 @@ const ProfilePage = () => {
               </tr>
             </tbody>
           </table>
-
         </div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default ProfilePage;
+export default ProfilePage

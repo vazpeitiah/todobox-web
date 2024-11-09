@@ -1,16 +1,16 @@
-import { ErrorMessage } from "@components"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useRegisterUser } from "@queries/auth"
-import { routes } from "@utils/const"
-import { CreateUser, createUserSchema } from "@utils/types"
-import { SubmitHandler, useForm } from "react-hook-form"
-import { Link, useNavigate } from "react-router-dom"
+import { ErrorMessage } from '@components'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useRegisterUser } from '@queries/auth'
+import { routes } from '@utils/const'
+import { CreateUser, createUserSchema } from '@utils/types'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { Link, useNavigate } from 'react-router-dom'
 
 const defaultValues: CreateUser = {
-  email: "",
-  password: "",
-  confirmPassword: "",
-  name: ""
+  email: '',
+  password: '',
+  confirmPassword: '',
+  name: ''
 }
 
 const SignUpPage = () => {
@@ -22,7 +22,7 @@ const SignUpPage = () => {
     defaultValues,
     resolver: zodResolver(createUserSchema)
   })
-  const navigate =useNavigate()
+  const navigate = useNavigate()
   const { registerUser } = useRegisterUser({
     onSuccess: () => navigate(routes.login)
   })
@@ -45,7 +45,7 @@ const SignUpPage = () => {
                 type="text"
                 placeholder="Escribe tu nombre"
                 className="input input-bordered"
-                {...register("name")}
+                {...register('name')}
               />
               {errors.name?.message && (
                 <ErrorMessage>{errors.name.message.toString()}</ErrorMessage>
@@ -59,7 +59,7 @@ const SignUpPage = () => {
                 type="email"
                 placeholder="email@example.com"
                 className="input input-bordered"
-                {...register("email")}
+                {...register('email')}
               />
               {errors.email?.message && (
                 <ErrorMessage>{errors.email.message.toString()}</ErrorMessage>
@@ -73,7 +73,7 @@ const SignUpPage = () => {
                 type="password"
                 placeholder="Escribe tu contraseña"
                 className="input input-bordered"
-                {...register("password")}
+                {...register('password')}
               />
               {errors.password?.message && (
                 <ErrorMessage>
@@ -94,7 +94,7 @@ const SignUpPage = () => {
                 type="password"
                 placeholder="Escribe tu contraseña"
                 className="input input-bordered"
-                {...register("confirmPassword")}
+                {...register('confirmPassword')}
               />
               {errors.confirmPassword?.message && (
                 <ErrorMessage>

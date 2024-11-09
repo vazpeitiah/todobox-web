@@ -1,22 +1,22 @@
-import { useAuthContext } from "@hooks/useAuthContext";
-import { routes } from "@utils/const";
-import clsx from "clsx";
-import { Package, Plus, ProfileCircle } from "iconoir-react";
-import { Link, useNavigate } from "react-router-dom";
+import { useAuthContext } from '@hooks/useAuthContext'
+import { routes } from '@utils/const'
+import clsx from 'clsx'
+import { Package, Plus, ProfileCircle } from 'iconoir-react'
+import { Link, useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
-  const { isLogged, logout, decodedToken } = useAuthContext();
-  const navigate = useNavigate();
+  const { isLogged, logout, decodedToken } = useAuthContext()
+  const navigate = useNavigate()
 
   const handleLogout = () => {
-    logout();
-    navigate(routes.login);
-  };
+    logout()
+    navigate(routes.login)
+  }
 
   return (
     <nav
-      className={clsx("bg-base-100 fixed top-0 w-full", {
-        ["sticky"]: isLogged,
+      className={clsx('bg-base-100 fixed top-0 w-full', {
+        ['sticky']: isLogged
       })}
     >
       <div className="navbar mx-auto max-w-4xl">
@@ -56,9 +56,7 @@ const Navbar = () => {
                   tabIndex={0}
                   className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
                 >
-                  <li className="menu-title">
-                    {decodedToken?.email}
-                  </li>
+                  <li className="menu-title">{decodedToken?.email}</li>
                   <li>
                     <Link to={routes.profile} className="justify-between">
                       Perfil
@@ -85,7 +83,7 @@ const Navbar = () => {
         )}
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar

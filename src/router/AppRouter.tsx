@@ -1,6 +1,6 @@
-import { createBrowserRouter } from "react-router-dom"
+import { createBrowserRouter } from 'react-router-dom'
 
-import Layout from "@layouts/Layout"
+import Layout from '@layouts/Layout'
 import {
   HomePage,
   NotFoundPage,
@@ -10,9 +10,9 @@ import {
   SignUpPage,
   ProfilePage,
   AboutPage
-} from "@pages"
-import { routes } from "@utils/const"
-import PrivateRoute from "@components/privateRoute/PrivateRoute"
+} from '@pages'
+import { routes } from '@utils/const'
+import PrivateRoute from '@components/privateRoute/PrivateRoute'
 
 const router = createBrowserRouter([
   {

@@ -1,8 +1,8 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 
-import { deleteTask } from "@api/tasks"
-import { useToastContext } from "@hooks/useToastContext"
-import { qk } from "@utils/const"
+import { deleteTask } from '@api/tasks'
+import { useToastContext } from '@hooks/useToastContext'
+import { qk } from '@utils/const'
 
 const useDeleteTask = () => {
   const queryClient = useQueryClient()
@@ -11,7 +11,7 @@ const useDeleteTask = () => {
     mutationFn: deleteTask,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [qk.tasks.get] })
-      success("Tarea eliminada correctamente")
+      success('Tarea eliminada correctamente')
     }
   })
 

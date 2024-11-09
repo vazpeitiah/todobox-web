@@ -1,7 +1,7 @@
-import TaskList from "@components/taskList/TaskList"
-import TasksTable from "@components/taskTable/TaskTable"
-import { useGetTasks } from "@queries/tasks"
-import { useTaskStore } from "../../stores/tasks"
+import TaskList from '@components/taskList/TaskList'
+import TasksTable from '@components/taskTable/TaskTable'
+import { useGetTasks } from '@queries/tasks'
+import { useTaskStore } from '../../stores/tasks'
 
 const Tasks = () => {
   const { tasks } = useGetTasks()

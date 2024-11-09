@@ -1,9 +1,9 @@
-import { Outlet, useLocation } from "react-router-dom"
-import { AnimatePresence } from "framer-motion"
+import { Outlet, useLocation } from 'react-router-dom'
+import { AnimatePresence } from 'framer-motion'
 
-import { Navbar } from "@components"
-import { routes } from "@utils/const"
-import clsx from "clsx"
+import { Navbar } from '@components'
+import { routes } from '@utils/const'
+import clsx from 'clsx'
 
 const Layout = () => {
   const { pathname } = useLocation()
@@ -18,7 +18,7 @@ const Layout = () => {
       <AnimatePresence>
         <main
           className={clsx({
-            ["max-w-4xl mx-auto py-8 md:px-8 px-4"]: !isLoginPaths
+            ['max-w-4xl mx-auto py-8 md:px-8 px-4']: !isLoginPaths
           })}
         >
           <Outlet />

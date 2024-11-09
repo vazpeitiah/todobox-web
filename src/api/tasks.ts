@@ -1,7 +1,7 @@
-import { CreateTask, taskSchema } from "@utils/types"
-import api from "@api/api"
+import { CreateTask, taskSchema } from '@utils/types'
+import api from '@api/api'
 
-const PATH = "/tasks"
+const PATH = '/tasks'
 
 export const getTasks = async () => {
   const response = await api.get(PATH)

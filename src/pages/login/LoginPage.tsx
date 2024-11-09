@@ -1,15 +1,15 @@
-import { SubmitHandler, useForm } from "react-hook-form"
-import { zodResolver } from "@hookform/resolvers/zod"
-import { Link, Navigate } from "react-router-dom"
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { zodResolver } from '@hookform/resolvers/zod'
+import { Link, Navigate } from 'react-router-dom'
 
-import { useAuthContext } from "@hooks/useAuthContext"
-import { routes } from "@utils/const"
-import { AuthParams, authParamsSchema } from "@utils/types"
-import { ErrorMessage } from "@components"
+import { useAuthContext } from '@hooks/useAuthContext'
+import { routes } from '@utils/const'
+import { AuthParams, authParamsSchema } from '@utils/types'
+import { ErrorMessage } from '@components'
 
 const defaultValues: AuthParams = {
-  email: "",
-  password: ""
+  email: '',
+  password: ''
 }
 
 const LoginPage = () => {
@@ -45,7 +45,7 @@ const LoginPage = () => {
                 type="email"
                 placeholder="email@example.com"
                 className="input input-bordered"
-                {...register("email")}
+                {...register('email')}
               />
               {errors.email?.message && (
                 <ErrorMessage>{errors.email.message.toString()}</ErrorMessage>
@@ -59,7 +59,7 @@ const LoginPage = () => {
                 type="password"
                 placeholder="Escribe tu contraseña"
                 className="input input-bordered"
-                {...register("password")}
+                {...register('password')}
               />
               {errors.password?.message && (
                 <ErrorMessage>

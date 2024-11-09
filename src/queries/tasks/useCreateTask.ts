@@ -1,8 +1,8 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 
-import { createTask } from "@api/tasks"
-import { qk } from "@utils/const"
-import { useToastContext } from "@hooks/useToastContext"
+import { createTask } from '@api/tasks'
+import { qk } from '@utils/const'
+import { useToastContext } from '@hooks/useToastContext'
 
 type UseCreateTask = {
   onSuccess?: () => void
@@ -16,7 +16,7 @@ const useCreateTask = (options?: UseCreateTask) => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: [qk.tasks.get] })
       options?.onSuccess?.()
-      success("Tarea creada correctamente")
+      success('Tarea creada correctamente')
     }
   })
 

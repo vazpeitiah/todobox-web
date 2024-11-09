@@ -1,6 +1,6 @@
-import { useAuthContext } from "@hooks/useAuthContext"
-import { routes } from "@utils/const"
-import { Navigate, Outlet } from "react-router-dom"
+import { useAuthContext } from '@hooks/useAuthContext'
+import { routes } from '@utils/const'
+import { Navigate, Outlet } from 'react-router-dom'
 
 const PrivateRoute = () => {
   const { isLogged } = useAuthContext()

@@ -1,10 +1,10 @@
-import { Chip } from "@components"
-import { routes } from "@utils/const"
-import { formatDate, getStatusChipType, getStatusLabel } from "@utils/helpers"
-import { Task } from "@utils/types"
-import { Link } from "react-router-dom"
-import { Check, Play } from "iconoir-react"
-import { TaskStatus } from "@utils/enum"
+import { Chip } from '@components'
+import { routes } from '@utils/const'
+import { formatDate, getStatusChipType, getStatusLabel } from '@utils/helpers'
+import { Task } from '@utils/types'
+import { Link } from 'react-router-dom'
+import { Check, Play } from 'iconoir-react'
+import { TaskStatus } from '@utils/enum'
 
 interface TasksListProps {
   tasks: Task[]
