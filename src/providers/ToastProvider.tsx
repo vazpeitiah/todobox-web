@@ -2,20 +2,21 @@ import { Toaster, toast as sonnerToast } from "sonner"
 
 import { useQueryClient } from "@tanstack/react-query"
 import { ToastContext } from "@hooks/useToastContext"
+import { ToastOptions } from "@utils/types"
 
 const ToastProvider = (props: { children: React.ReactNode }) => {
   const queryClient = useQueryClient()
 
-  const toast = (message: string) => {
-    sonnerToast(message)
+  const toast = (message: string, options?: ToastOptions) => {
+    sonnerToast(message, options)
   }
 
-  const error = (message: string) => {
-    sonnerToast.error(message)
+  const error = (message: string, options?: ToastOptions) => {
+    sonnerToast.error(message, options)
   }
 
-  const success = (message: string) => {
-    sonnerToast.success(message)
+  const success = (message: string, options?: ToastOptions) => {
+    sonnerToast.success(message, options) 
   }
 
   queryClient.getQueryCache().config.onError = (errorObject, qk) => {

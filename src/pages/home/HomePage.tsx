@@ -1,26 +1,29 @@
-import { routes } from "@utils/const"
-import { Link } from "react-router-dom"
+import { useAuthContext } from "@hooks/useAuthContext";
+import { routes } from "@utils/const";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
+  const { decodedToken } = useAuthContext();
+
   return (
     <div className="hero">
       <div className="hero-content text-center">
         <div className="max-w-md">
-          <h1 className="text-5xl font-bold">Bienvenido a TodoBox</h1>
-          <p className="py-6 prose">
-            Todobox es una aplicación de gestión de tareas enfocada en facilitar
-            la organización personal mediante el uso de metodologías como GTD
-            (Getting Things Done). Su diseño sencillo permite a los usuarios
-            capturar, organizar y gestionar sus tareas de forma intuitiva,
-            manteniéndose productivos y enfocados en lo que importa.
+          <h1 className="text-5xl font-bold">
+            Bienvenido {decodedToken?.name}
+          </h1>
+          <p className="mt-4 text-xl">
+            Comienza a organizar tus tareas de forma sencilla
           </p>
-          <Link to={routes.tasks.root} className="btn btn-primary">
-            Empieza ahora
-          </Link>
+          <div className="mt-6">
+            <Link to={routes.tasks.root} className="btn btn-primary">
+              Empieza ahora
+            </Link>
+          </div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;

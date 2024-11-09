@@ -4,7 +4,7 @@ import { useRegisterUser } from "@queries/auth"
 import { routes } from "@utils/const"
 import { CreateUser, createUserSchema } from "@utils/types"
 import { SubmitHandler, useForm } from "react-hook-form"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const defaultValues: CreateUser = {
   email: "",
@@ -22,7 +22,10 @@ const SignUpPage = () => {
     defaultValues,
     resolver: zodResolver(createUserSchema)
   })
-  const { registerUser } = useRegisterUser()
+  const navigate =useNavigate()
+  const { registerUser } = useRegisterUser({
+    onSuccess: () => navigate(routes.login)
+  })
 
   const handleOnSubmit: SubmitHandler<CreateUser> = (data) => {
     registerUser(data)
@@ -91,11 +94,11 @@ const SignUpPage = () => {
                 type="password"
                 placeholder="Escribe tu contraseña"
                 className="input input-bordered"
-                {...register("password")}
+                {...register("confirmPassword")}
               />
-              {errors.password?.message && (
+              {errors.confirmPassword?.message && (
                 <ErrorMessage>
-                  {errors.password.message.toString()}
+                  {errors.confirmPassword.message.toString()}
                 </ErrorMessage>
               )}
               {/*   <label className="label">

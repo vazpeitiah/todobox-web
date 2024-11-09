@@ -20,15 +20,28 @@ export const userSchema = z.object({
 
 export const authParamsSchema = userSchema.omit({ name: true, id: true })
 
+export const decodedTokenSchema = userSchema.omit({ password: true, id: true }).extend({
+  userId: z.string(),
+  iat: z.number(),
+  exp: z.number()
+})
+
 export const createUserSchema = userSchema
   .omit({ id: true })
   .extend({
     confirmPassword: z.string().min(6)
   })
-  .refine((data) => data.password === data.confirmPassword, {
-    message: "Las contraseñas no coinciden"
+  .superRefine((data, ctx) => {
+    if (data.password !== data.confirmPassword) {
+      return ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Las contraseñas no coinciden",
+        path: ["confirmPassword"]
+      })
+    }
+    return true
   })
-
+export type DecodedToken = z.infer<typeof decodedTokenSchema>
 export type CreateUser = z.infer<typeof createUserSchema>
 
 export type AuthParams = z.infer<typeof authParamsSchema>
@@ -37,10 +50,14 @@ export type User = z.infer<typeof userSchema>
 export type Task = z.infer<typeof taskSchema>
 export type CreateTask = z.infer<typeof createTaskSchema>
 
+export type ToastOptions ={
+  description: string
+}
+
 export type ToastContextType = {
-  toast: (message: string) => void
-  error: (message: string) => void
-  success: (message: string) => void
+  toast: (message: string, options?: ToastOptions) => void
+  error: (message: string, options?: ToastOptions) => void
+  success: (message: string, options?: ToastOptions) => void
 }
 
 export type AuthContextType = {
@@ -49,6 +66,7 @@ export type AuthContextType = {
   logout: () => void
   isLoginSuccess: boolean
   isLoginError: boolean
+  decodedToken: DecodedToken | null
 }
 
 export type ChipType = "error" | "success" | "inactive" | "warning"

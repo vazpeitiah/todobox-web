@@ -1,14 +1,26 @@
 import { useEffect, useState } from "react"
+import { jwtDecode } from "jwt-decode";
 
 import { AuthContext } from "@hooks/useAuthContext"
 import { useLocalStorage } from "@hooks/useLocalStorage"
 import { useLogin } from "@queries/auth"
+import { decodedTokenSchema } from "@utils/types";
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+  
   const { login, isError, isSuccess } = useLogin()
   const { get, remove } = useLocalStorage("token")
   const [isLogged, setIsLogged] = useState(true)
   const token = get()
+
+  const decodedToken = (token: string | null) => {
+    try {
+      if (!token) return null
+      return decodedTokenSchema.parse(jwtDecode(token))
+    } catch (_error) {
+      return null
+    }
+  }
 
   useEffect(() => {
     if (token) {
@@ -30,7 +42,8 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         isLogged,
         logout,
         isLoginError: isError,
-        isLoginSuccess: isSuccess
+        isLoginSuccess: isSuccess,
+        decodedToken: decodedToken(token)
       }}
     >
       {children}
