@@ -32,7 +32,7 @@ const SignUpPage = () => {
   }
 
   return (
-    <div className="hero bg-base-200 min-h-screen">
+    <div className="hero bg-base-200 min-h-screen py-20">
       <div className="hero-content">
         <div className="card bg-base-100 shadow-lg sm:w-96">
           <form className="card-body" onSubmit={handleSubmit(handleOnSubmit)}>

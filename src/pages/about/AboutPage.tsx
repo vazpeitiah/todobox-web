@@ -9,8 +9,7 @@ const HomePage = () => {
           <h1 className="text-5xl font-bold">Bienvenido a TodoBox</h1>
           <p className="py-6 prose">
             Todobox es una aplicación de gestión de tareas enfocada en facilitar
-            la organización personal mediante el uso de metodologías como GTD
-            (Getting Things Done). Su diseño sencillo permite a los usuarios
+            la organización personal. Su diseño sencillo permite a los usuarios
             capturar, organizar y gestionar sus tareas de forma intuitiva,
             manteniéndose productivos y enfocados en lo que importa.
           </p>
