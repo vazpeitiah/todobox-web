@@ -1,14 +1,16 @@
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { zodResolver } from '@hookform/resolvers/zod'
+import clsx from 'clsx'
 
 import { useCreateTask } from '@queries/tasks'
 import { CreateTask, createTaskSchema, Task } from '@utils/types'
 import { TaskStatus } from '@utils/enum'
 import { getStatusLabel, parseUtcDate } from '@utils/helpers'
-import clsx from 'clsx'
 import useUpdateTask from '@queries/tasks/useUpdateTask'
 import { ErrorMessage } from '@components'
+import { useTaskStore } from '@stores/tasks'
+import { useEffect } from 'react'
 
 const defaultValues: CreateTask = {
   title: '',
@@ -21,14 +23,16 @@ const TaskForm = () => {
   const { state } = useLocation()
   const task: Task | undefined = state?.task
   const navigate = useNavigate()
+  const { status } = useTaskStore()
   const {
     handleSubmit,
     register,
     reset,
     formState: { errors },
-    control
+    control,
+    setValue
   } = useForm({
-    defaultValues,
+    defaultValues: defaultValues,
     values: task
       ? {
           ...task,
@@ -43,6 +47,10 @@ const TaskForm = () => {
   const { updateTask } = useUpdateTask({
     onSuccess: () => handleCancel()
   })
+
+  useEffect(() => {
+    setValue('status', status)
+  }, [status, setValue])
 
   const handleOnSubmit: SubmitHandler<CreateTask> = (data) => {
     if (task) {

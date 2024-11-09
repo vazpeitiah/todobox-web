@@ -42,6 +42,8 @@
       "@queries/*": ["./src/queries/*"],
       "@router": ["./src/router"],
       "@router/*": ["./src/router/*"],
+      "@stores": ["./src/stores"],
+      "@stores/*": ["./src/stores/*"],
       "@utils": ["./src/utils"],
       "@utils/*": ["./src/utils/*"]
     }

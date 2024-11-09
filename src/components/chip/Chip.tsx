@@ -9,7 +9,7 @@ type ChipProps = {
 const Chip = ({ type = 'inactive', children }: ChipProps) => {
   return (
     <span
-      className={clsx('badge', {
+      className={clsx('badge badge-outline badge-sm', {
         ['badge-error']: type === 'error',
         ['badge-success']: type === 'success',
         ['badge-warning']: type === 'warning'

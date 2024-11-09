@@ -1,10 +1,10 @@
+import clsx from 'clsx'
 import { Outlet, useLocation } from 'react-router-dom'
 import { AnimatePresence } from 'framer-motion'
 
 import { Navbar, Drawer } from '@components'
 import { routes } from '@utils/const'
-import clsx from 'clsx'
-import { useDrawerStore } from '../stores/drawer'
+import { useDrawerStore } from '@stores/drawer'
 
 const Layout = () => {
   const { pathname } = useLocation()
@@ -19,7 +19,12 @@ const Layout = () => {
 
   return (
     <div className="drawer">
-      <input type="checkbox" className="drawer-toggle" checked={isDrawerOpen} />
+      <input
+        type="checkbox"
+        className="drawer-toggle"
+        checked={isDrawerOpen}
+        readOnly
+      />
       <div className="drawer-content">
         <Navbar />
         <AnimatePresence>

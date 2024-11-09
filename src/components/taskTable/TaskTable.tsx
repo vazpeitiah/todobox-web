@@ -1,8 +1,10 @@
 import { Chip } from '@components'
 import { useDeleteTask } from '@queries/tasks'
+import { routes } from '@utils/const'
 import { getStatusChipType, getStatusLabel } from '@utils/helpers'
 import { Task } from '@utils/types'
-import { Trash } from 'iconoir-react'
+import { Edit, Trash } from 'iconoir-react'
+import { Link } from 'react-router-dom'
 
 interface TasksTableProps {
   tasks: Task[]
@@ -38,12 +40,21 @@ const TasksTable = ({ tasks }: TasksTableProps) => {
               </Chip>
             </td>
             <td>
-              <button
-                onClick={() => handleDelete(task.id)}
-                className="link link-error text-xs"
-              >
-                <Trash />
-              </button>
+              <div className="flex items-center gap-4">
+                <Link
+                  to={routes.tasks.new}
+                  state={{ task }}
+                  className="link link-neutral text-sm"
+                >
+                  <Edit />
+                </Link>
+                <button
+                  onClick={() => handleDelete(task.id)}
+                  className="link link-error text-sm"
+                >
+                  <Trash />
+                </button>
+              </div>
             </td>
           </tr>
         ))}

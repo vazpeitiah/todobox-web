@@ -1,8 +1,9 @@
-import { useAuthContext } from '@hooks/useAuthContext'
-import { routes } from '@utils/const'
 import { Package } from 'iconoir-react'
 import { Link } from 'react-router-dom'
-import { useDrawerStore } from '../../stores/drawer'
+
+import { useAuthContext } from '@hooks/useAuthContext'
+import { useDrawerStore } from '@stores/drawer'
+import { routes } from '@utils/const'
 
 const Drawer = () => {
   const { isLogged } = useAuthContext()
