@@ -3,7 +3,8 @@ export const routes = {
   root: '/',
   tasks: {
     root: '/tasks',
-    new: '/tasks/new'
+    new: '/tasks/new',
+    status: '/tasks/status'
   },
   login: '/login',
   signUp: '/sign-up',

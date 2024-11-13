@@ -5,28 +5,12 @@ import { routes } from '@utils/const'
 import { formatDate, getStatusChipType, getStatusLabel } from '@utils/helpers'
 import { Task } from '@utils/types'
 import { TaskStatus } from '@utils/enum'
-import useUpdateTask from '@queries/tasks/useUpdateTask'
 
 interface TasksListProps {
   tasks: Task[]
 }
 
 const TaskList = ({ tasks }: TasksListProps) => {
-  const { updateTask } = useUpdateTask()
-
-  const handleUpdateStatus = (task: Task) => {
-    updateTask({
-      id: task.id,
-      data: {
-        ...task,
-        status:
-          task.status === TaskStatus.Pending
-            ? TaskStatus.InProgress
-            : TaskStatus.Done
-      }
-    })
-  }
-
   const getNextStatus = (status: TaskStatus) => {
     if (status === TaskStatus.Pending) {
       return <StatusIcon status={TaskStatus.InProgress} />
@@ -56,12 +40,13 @@ const TaskList = ({ tasks }: TasksListProps) => {
             </Chip>
             <div className="card-actions justify-end">
               {task.status !== TaskStatus.Done && (
-                <button
+                <Link
+                  to={routes.tasks.status}
+                  state={{ task }}
                   className="btn btn-circle btn-xs"
-                  onClick={() => handleUpdateStatus(task)}
                 >
                   {getNextStatus(task.status)}
-                </button>
+                </Link>
               )}
             </div>
           </div>

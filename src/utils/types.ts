@@ -6,7 +6,10 @@ export const taskSchema = z.object({
   title: z.string().trim().min(3),
   description: z.string().trim().optional(),
   date: z.coerce.date().nullish(),
-  status: z.nativeEnum(TaskStatus)
+  status: z.nativeEnum(TaskStatus),
+  start: z.coerce.date().nullish(),
+  end: z.coerce.date().nullish(),
+  comments: z.string().trim().optional()
 })
 
 export const createTaskSchema = taskSchema.omit({ id: true })

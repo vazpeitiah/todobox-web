@@ -1,5 +1,6 @@
 import { CreateTask, taskSchema } from '@utils/types'
 import api from '@api/api'
+import { parsePayloadDate } from '@utils/helpers'
 
 const PATH = '/tasks'
 
@@ -9,7 +10,8 @@ export const getTasks = async () => {
 }
 
 export const createTask = async (task: CreateTask) => {
-  const response = await api.post(PATH, task)
+  const parsedDate = parsePayloadDate(task.date)
+  const response = await api.post(PATH, { ...task, date: parsedDate })
   return taskSchema.parse(response.data)
 }
 
@@ -18,6 +20,7 @@ export const deleteTask = async (id: string) => {
 }
 
 export const updateTask = async (id: string, task: Partial<CreateTask>) => {
-  const response = await api.put(`${PATH}/${id}`, task)
+  const parsedDate = parsePayloadDate(task.date)
+  const response = await api.put(`${PATH}/${id}`, { ...task, date: parsedDate })
   return taskSchema.parse(response.data)
 }

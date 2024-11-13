@@ -9,7 +9,8 @@ import {
   LoginPage,
   SignUpPage,
   ProfilePage,
-  AboutPage
+  AboutPage,
+  UpdateStatus
 } from '@pages'
 import { routes } from '@utils/const'
 import PrivateRoute from '@components/privateRoute/PrivateRoute'
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
           {
             path: routes.tasks.new,
             element: <TaskForm />
+          },
+          {
+            path: routes.tasks.status,
+            element: <UpdateStatus />
           },
           {
             path: routes.profile,

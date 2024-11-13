@@ -1,7 +1,7 @@
 import { Chip } from '@components'
 import { useDeleteTask } from '@queries/tasks'
 import { routes } from '@utils/const'
-import { getStatusChipType, getStatusLabel } from '@utils/helpers'
+import { formatDate, getStatusChipType, getStatusLabel } from '@utils/helpers'
 import { Task } from '@utils/types'
 import { Edit, Trash } from 'iconoir-react'
 import { Link } from 'react-router-dom'
@@ -33,7 +33,7 @@ const TasksTable = ({ tasks }: TasksTableProps) => {
         {tasks.map((task) => (
           <tr key={task.id}>
             <td>{task.title}</td>
-            <td>{task.date?.toLocaleDateString()}</td>
+            <td>{formatDate(task.date)}</td>
             <td>
               <Chip type={getStatusChipType(task.status)}>
                 {getStatusLabel(task.status)}

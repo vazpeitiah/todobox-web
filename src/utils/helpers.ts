@@ -43,3 +43,9 @@ export const formatDate = (date?: Date | null): string => {
     day: 'numeric'
   })
 }
+
+export const parsePayloadDate = (date?: Date | null): Date | undefined => {
+  if (!date) return undefined
+  const currentTimeZoneOffset = new Date().getTimezoneOffset()
+  return new Date(date.getTime() + currentTimeZoneOffset * 60 * 1000)
+}
